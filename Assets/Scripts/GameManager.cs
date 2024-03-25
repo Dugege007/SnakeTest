@@ -7,6 +7,9 @@ namespace SnakeTest
     public class GameManager : MonoSingleton<GameManager>
     {
         public Snake Snake;
+        public bool IsGaming = true;
+
+        public int Score = 0;
 
         protected override void Awake()
         {
@@ -19,6 +22,7 @@ namespace SnakeTest
         public void GameOver()
         {
             //TODO
+            IsGaming = false;
             Debug.Log("ÓÎÏ·½áÊø");
         }
     }

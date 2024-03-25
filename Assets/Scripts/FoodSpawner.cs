@@ -10,8 +10,12 @@ namespace SnakeTest
     public class FoodSpawner : MonoBehaviour
     {
         public GameObject FoodPrefab;
-
         private GameObject currentFood;
+
+        private void Start()
+        {
+            currentFood = Instantiate(FoodPrefab, new Vector3(0, 5f, 0), Quaternion.identity);
+        }
 
         private void Update()
         {

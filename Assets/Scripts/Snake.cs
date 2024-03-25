@@ -27,8 +27,11 @@ namespace SnakeTest
 
             if (moveTimer > MoveTimeInterval)
             {
-                Move();
-                moveTimer = 0;
+                if (GameManager.Instance.IsGaming)
+                {
+                    Move();
+                    moveTimer = 0;
+                }
             }
         }
 
@@ -60,6 +63,7 @@ namespace SnakeTest
 
             // ÒÆ¶¯
             transform.position += moveDir;
+            transform.up = moveDir;
         }
 
         public void GrowUp()

@@ -10,6 +10,7 @@ namespace SnakeTest
         {
             if (collision.gameObject.CompareTag("Snake"))
             {
+                GameManager.Instance.Score++;
                 Destroy(gameObject);
 
                 // »√…ﬂ±‰≥§
