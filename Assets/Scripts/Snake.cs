@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SnakeTest
@@ -7,15 +8,15 @@ namespace SnakeTest
     public class Snake : MonoBehaviour
     {
         public GameObject SnakeBodyPrefab;
-        public Queue<GameObject> SnakeBodyQueue = new Queue<GameObject>();
+        public List<GameObject> SnakeBodyList = new List<GameObject>();
 
         public float MoveTimeInterval = 1f;
         private float moveTimer;
-        private Vector3 currentDir;
+        private Vector3 moveDir;
 
         private void Start()
         {
-            currentDir = Vector3.up;
+            moveDir = Vector3.up;
         }
 
         private void Update()
@@ -37,34 +38,34 @@ namespace SnakeTest
             float vertical = Input.GetAxisRaw("Vertical");
 
             if (horizontal > 0)
-                currentDir = Vector3.right;
+                moveDir = Vector3.right;
             if (horizontal < 0)
-                currentDir = Vector3.left;
+                moveDir = Vector3.left;
             if (vertical > 0)
-                currentDir = Vector3.up;
+                moveDir = Vector3.up;
             if (vertical < 0)
-                currentDir = Vector3.down;
+                moveDir = Vector3.down;
         }
 
         private void Move()
         {
             // 移动前，将当前位置给到更新的蛇身
-            if (SnakeBodyQueue.Count > 0)
+            if (SnakeBodyList.Count > 0)
             {
-                GameObject lastBody = SnakeBodyQueue.Dequeue();
+                GameObject lastBody = SnakeBodyList.Last();
+                SnakeBodyList.Remove(lastBody);
                 lastBody.transform.position = transform.position;
-                SnakeBodyQueue.Enqueue(lastBody);
+                SnakeBodyList.Insert(0, lastBody);
             }
 
             // 移动
-            transform.position += currentDir;
+            transform.position += moveDir;
         }
 
-        private void GrowUp()
+        public void GrowUp()
         {
             GameObject bodyPrefab = Instantiate(SnakeBodyPrefab, new Vector3(1000, 1000, 0), Quaternion.identity);
-            bodyPrefab.transform.parent = transform;
-            SnakeBodyQueue.Enqueue(bodyPrefab);
+            SnakeBodyList.Add(bodyPrefab);
         }
     }
 }

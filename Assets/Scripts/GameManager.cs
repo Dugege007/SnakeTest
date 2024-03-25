@@ -4,18 +4,16 @@ using UnityEngine;
 
 namespace SnakeTest
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoSingleton<GameManager>
     {
-        // Start is called before the first frame update
-        void Start()
+        public Snake Snake;
+
+        protected override void Awake()
         {
+            base.Awake();
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            if (Snake == null)
+                Snake = GameObject.FindGameObjectWithTag("Snake").GetComponent<Snake>();
         }
     }
 }

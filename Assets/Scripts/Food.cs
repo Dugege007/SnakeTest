@@ -13,6 +13,7 @@ namespace SnakeTest
                 Destroy(gameObject);
 
                 // »√…ﬂ±‰≥§
+                GameManager.Instance.Snake.GrowUp();
             }
         }
     }
