@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +30,11 @@ namespace SnakeTest
                 {
                     SceneManager.LoadScene("Game");
                 }
+            }
+
+            if (Score % 10 == 0)
+            {
+                Snake.SpeedUp();
             }
         }
 

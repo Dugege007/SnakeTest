@@ -109,6 +109,11 @@ namespace SnakeTest
             SnakeBodyList.Add(bodyPrefab);
         }
 
+        public void SpeedUp()
+        {
+            MoveSpeed += 0.1f;
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("SnakeBody"))

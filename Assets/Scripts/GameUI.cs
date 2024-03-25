@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace SnakeTest
@@ -9,6 +10,8 @@ namespace SnakeTest
         public Image GameOverPanel;
         private bool isGameOver = false;
 
+        public Image HelpPanel;
+
         public Text ScoreText;
         private int tempScore;
         public Text TopScoreText;
@@ -19,17 +22,40 @@ namespace SnakeTest
             gameManager = GameManager.Instance;
 
             GameOverPanel.gameObject.SetActive(false);
+            HelpPanel.gameObject.SetActive(false);
+
             NewRecordText.gameObject.SetActive(false);
         }
 
         private void Update()
         {
-            if (gameManager == null || isGameOver) return;
+            if (gameManager == null) return;
+
+            if (isGameOver)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                }
+            }
 
             if (gameManager.Score != tempScore)
             {
                 ScoreText.text = gameManager.Score.ToString();
                 tempScore = gameManager.Score;
+            }
+
+            // ²é¿´°ïÖú
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                HelpPanel.gameObject.SetActive(true);
+                Time.timeScale = 0f;
+            }
+
+            if (Input.GetKeyUp(KeyCode.H))
+            {
+                HelpPanel.gameObject.SetActive(false);
+                Time.timeScale = 1f;
             }
         }
 
