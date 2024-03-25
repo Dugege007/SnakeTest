@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float MoveTimeInterval = 1f;
+    private float moveTimer;
+    private Vector3 currentDir;
+
+    private void Update()
     {
-        
+        moveTimer += Time.deltaTime;
+
+        SwitchDir();
+
+        if (moveTimer > MoveTimeInterval)
+        {
+            Move();
+            moveTimer = 0;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SwitchDir()
     {
-        
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        if (horizontal > 0)
+            currentDir = Vector3.right;
+        if (horizontal < 0)
+            currentDir = Vector3.left;
+        if (vertical > 0)
+            currentDir = Vector3.up;
+        if (vertical < 0)
+            currentDir = Vector3.down;
+    }
+
+    private void Move()
+    {
+        transform.position += currentDir;
     }
 }
