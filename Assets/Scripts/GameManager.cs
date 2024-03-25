@@ -12,6 +12,8 @@ namespace SnakeTest
         public int TopScore = 0;
         public bool IsNewRecord = false;
 
+        private bool needSpeedUp = false;
+
         protected override void Awake()
         {
             base.Awake();
@@ -32,9 +34,15 @@ namespace SnakeTest
                 }
             }
 
-            if (Score % 10 == 0)
+            if (Score > 0 && Score % 10 == 0)
             {
-                Snake.SpeedUp();
+                needSpeedUp = true;
+
+                if (needSpeedUp)
+                {
+                    Snake.SpeedUp();
+                    needSpeedUp = false;
+                }
             }
         }
 
