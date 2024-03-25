@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1602353873751080485}
   - component: {fileID: 7409603748298144713}
-  - component: {fileID: 7300594810163833899}
   - component: {fileID: 3438103639055773893}
   m_Layer: 0
   m_Name: SnakeBody
@@ -86,18 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7300594810163833899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5430364887829333797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5c29534a8839be4d9daa2f9856646e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3438103639055773893
 BoxCollider2D:
   m_ObjectHideFlags: 0
