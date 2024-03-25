@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Snake
   - Collectable
+  - SnakeBody
+  - Wall
   layers:
   - Default
   - TransparentFX

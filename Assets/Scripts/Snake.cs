@@ -67,5 +67,20 @@ namespace SnakeTest
             GameObject bodyPrefab = Instantiate(SnakeBodyPrefab, new Vector3(1000, 1000, 0), Quaternion.identity);
             SnakeBodyList.Add(bodyPrefab);
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("SnakeBody"))
+            {
+                // 游戏结束
+                GameManager.Instance.GameOver();
+            }
+
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                // 游戏结束
+                GameManager.Instance.GameOver();
+            }
+        }
     }
 }

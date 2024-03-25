@@ -15,5 +15,11 @@ namespace SnakeTest
             if (Snake == null)
                 Snake = GameObject.FindGameObjectWithTag("Snake").GetComponent<Snake>();
         }
+
+        public void GameOver()
+        {
+            //TODO
+            Debug.Log("”Œœ∑Ω· ¯");
+        }
     }
 }
