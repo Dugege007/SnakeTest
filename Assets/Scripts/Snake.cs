@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,22 +9,59 @@ namespace SnakeTest
         public GameObject SnakeBodyPrefab;
         public List<GameObject> SnakeBodyList = new List<GameObject>();
 
-        public float MoveTimeInterval = 1f;
+        public float MoveSpeed = 1.8f;
         private float moveTimer;
         private Vector3 moveDir;
+        private float currentMoveSpeed;
+
+        private bool isPressingMoveKey = false;
+        private float readyTimer;
+        public float StartSpeedUpTime = 0.8f;
 
         private void Start()
         {
             moveDir = Vector3.up;
+            currentMoveSpeed = MoveSpeed;
         }
 
         private void Update()
         {
+            // 计时
             moveTimer += Time.deltaTime;
+            if (isPressingMoveKey)
+                readyTimer += Time.deltaTime;
 
+            // 转向
             SwitchDir();
 
-            if (moveTimer > MoveTimeInterval)
+            // 按下按键
+            if (Input.GetKeyDown(KeyCode.W)
+                || Input.GetKeyDown(KeyCode.A)
+                || Input.GetKeyDown(KeyCode.S)
+                || Input.GetKeyDown(KeyCode.D))
+            {
+                Move();
+                moveTimer = 0;
+                isPressingMoveKey = true;
+            }
+
+            // 加速
+            if (readyTimer > StartSpeedUpTime)
+                currentMoveSpeed = MoveSpeed * 2f;
+
+            // 抬起按键
+            if (Input.GetKeyUp(KeyCode.W)
+                || Input.GetKeyUp(KeyCode.A)
+                || Input.GetKeyUp(KeyCode.S)
+                || Input.GetKeyUp(KeyCode.D))
+            {
+                isPressingMoveKey = false;
+                currentMoveSpeed = MoveSpeed;
+                readyTimer = 0;
+            }
+
+            // 间隔时间移动
+            if (moveTimer > 1f / currentMoveSpeed)
             {
                 if (GameManager.Instance.IsGaming)
                 {

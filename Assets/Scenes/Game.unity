@@ -1289,7 +1289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SnakeBodyPrefab: {fileID: 5430364887829333797, guid: beeb2300a5d0b5144a3cb90ea5f6e1fd, type: 3}
   SnakeBodyList: []
-  MoveTimeInterval: 0.3
+  MoveSpeed: 1.8
+  StartSpeedUpTime: 0.8
 --- !u!50 &1199775398
 Rigidbody2D:
   serializedVersion: 4
