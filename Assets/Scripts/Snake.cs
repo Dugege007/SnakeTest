@@ -94,6 +94,7 @@ namespace SnakeTest
                 GameObject lastBody = SnakeBodyList.Last();
                 SnakeBodyList.Remove(lastBody);
                 lastBody.transform.position = transform.position;
+                lastBody.transform.rotation = transform.rotation;
                 SnakeBodyList.Insert(0, lastBody);
             }
 
