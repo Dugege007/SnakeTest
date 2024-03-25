@@ -31,7 +31,7 @@ namespace SnakeTest
             if (isPressingMoveKey)
                 readyTimer += Time.deltaTime;
 
-            // 转向
+            // 选择方向
             SwitchDir();
 
             // 按下按键
@@ -76,19 +76,19 @@ namespace SnakeTest
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
 
-            if (horizontal > 0)
+            if (horizontal > 0 && moveDir.x == 0)
                 moveDir = Vector3.right;
-            if (horizontal < 0)
+            if (horizontal < 0 && moveDir.x == 0)
                 moveDir = Vector3.left;
-            if (vertical > 0)
+            if (vertical > 0 && moveDir.y == 0)
                 moveDir = Vector3.up;
-            if (vertical < 0)
+            if (vertical < 0 && moveDir.y == 0)
                 moveDir = Vector3.down;
         }
 
         private void Move()
         {
-            // 移动前，将当前位置给到更新的蛇身
+            // 将蛇尾放到当前位置
             if (SnakeBodyList.Count > 0)
             {
                 GameObject lastBody = SnakeBodyList.Last();
@@ -97,8 +97,9 @@ namespace SnakeTest
                 SnakeBodyList.Insert(0, lastBody);
             }
 
-            // 移动
+            // 移动一格
             transform.position += moveDir;
+            // 变换方向
             transform.up = moveDir;
         }
 
