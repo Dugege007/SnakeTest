@@ -1,3 +1,4 @@
+using QFramework;
 using UnityEngine;
 
 namespace SnakeTest
@@ -11,6 +12,7 @@ namespace SnakeTest
     public class Food : MonoBehaviour
     {
         public FoodType FoodType = FoodType.Normal;
+        public Color DefaultColor;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -27,11 +29,20 @@ namespace SnakeTest
                     default:
                         break;
                 }
-                Destroy(gameObject);
+                ResetSelf();
+                // 回收
+                GameManager.Instance.FoodPoolRecycle(gameObject);
 
                 // 让蛇变长
-                GameManager.Instance.Snake.GrowUp();
+                GameManager.Instance.SnakeGrowUp();
             }
+        }
+
+        private void ResetSelf()
+        {
+            // 设置回默认值
+            GetComponent<SpriteRenderer>().color = DefaultColor;
+            FoodType = FoodType.Normal;
         }
     }
 }
