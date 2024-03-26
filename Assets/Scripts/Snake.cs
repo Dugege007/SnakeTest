@@ -18,6 +18,7 @@ namespace SnakeTest
         private bool isPressingMoveKey = false;
         private float readyTimer;
         public float StartSpeedUpTime = 0.8f;
+        private int level = 0;
 
         private void Start()
         {
@@ -27,8 +28,11 @@ namespace SnakeTest
             // 监听分数变化
             GameManager.Instance.Score.RegisterWithInitValue(score =>
             {
-                if (score > 0 && score % 10 == 0)
+                if (score / 10 > level)
+                {
+                    level++;
                     SpeedUp();
+                }
 
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }

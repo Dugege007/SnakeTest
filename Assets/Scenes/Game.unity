@@ -195,7 +195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.6107103, g: 1, b: 0.4575472, a: 1}
   m_FlipX: 0
@@ -907,7 +907,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Snake: {fileID: 1199775397}
   IsGaming: 1
-  Score: 0
   TopScore: 0
   IsNewRecord: 0
 --- !u!1 &644893478
@@ -982,7 +981,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1210,7 +1209,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1.5
-  m_Text: "W A S D \u6216 \u2191\u2193\u2190\u2192 \u952E\u79FB\u52A8\n\u957F\u6309\u79FB\u52A8\u952E\u52A0\u901F\n\u5206\u6570\u8D8A\u9AD8\uFF0C\u79FB\u52A8\u901F\u5EA6\u8D8A\u5FEB"
+  m_Text: "W A S D \u6216 \u2191\u2193\u2190\u2192 \u952E\u79FB\u52A8\n\u957F\u6309
+    W A S D \u952E\u52A0\u901F\n\u5206\u6570\u8D8A\u9AD8\uFF0C\u79FB\u52A8\u901F\u5EA6\u8D8A\u5FEB"
 --- !u!222 &994476114
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2602,7 +2602,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
