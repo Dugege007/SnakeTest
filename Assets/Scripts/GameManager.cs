@@ -36,12 +36,10 @@ namespace SnakeTest
 
             if (Score > 0 && Score % 10 == 0)
             {
-                needSpeedUp = true;
-
-                if (needSpeedUp)
+                if (needSpeedUp == false)
                 {
                     Snake.SpeedUp();
-                    needSpeedUp = false;
+                    needSpeedUp = true;
                 }
             }
         }
