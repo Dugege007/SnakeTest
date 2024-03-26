@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SnakeTest
@@ -21,11 +19,10 @@ namespace SnakeTest
                 switch (FoodType)
                 {
                     case FoodType.Normal:
-                        GameManager.Instance.Score++;
+                        GameManager.Instance.Score.Value++;
                         break;
                     case FoodType.BigScore:
-                        GameManager.Instance.Score += 10;
-                        GameManager.Instance.Snake.SpeedUp();
+                        GameManager.Instance.Score.Value += 10;
                         break;
                     default:
                         break;

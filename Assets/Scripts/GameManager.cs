@@ -1,3 +1,4 @@
+using QFramework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ namespace SnakeTest
         public Snake Snake;
         public bool IsGaming = true;
 
-        public int Score = 0;
+        public BindableProperty<int> Score = new(0);
         public int TopScore = 0;
         public bool IsNewRecord = false;
 
@@ -34,13 +35,10 @@ namespace SnakeTest
                 }
             }
 
-            if (Score > 0 && Score % 10 == 0)
+            if (needSpeedUp)
             {
-                if (needSpeedUp == false)
-                {
-                    Snake.SpeedUp();
-                    needSpeedUp = true;
-                }
+                Snake.SpeedUp();
+                needSpeedUp = false;
             }
         }
 
@@ -53,12 +51,9 @@ namespace SnakeTest
 
         public void Save()
         {
-            if (Score > TopScore)
-            {
-                TopScore = Score;
-                IsNewRecord = true;
-                PlayerPrefs.SetInt("TopScore", TopScore);
-            }
+            TopScore = Score.Value;
+            IsNewRecord = true;
+            PlayerPrefs.SetInt("TopScore", TopScore);
         }
 
         public void Load()

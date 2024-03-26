@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using QFramework;
 
 namespace SnakeTest
 {
@@ -22,6 +23,14 @@ namespace SnakeTest
         {
             moveDir = Vector3.up;
             currentMoveSpeed = MoveSpeed;
+
+            // 监听分数变化
+            GameManager.Instance.Score.RegisterWithInitValue(score =>
+            {
+                if (score > 0 && score % 10 == 0)
+                    SpeedUp();
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
 
         private void Update()

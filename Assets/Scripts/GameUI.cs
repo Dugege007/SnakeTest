@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using QFramework;
 
 namespace SnakeTest
 {
@@ -13,7 +14,6 @@ namespace SnakeTest
         public Image HelpPanel;
 
         public Text ScoreText;
-        private int tempScore;
         public Text TopScoreText;
         public Text NewRecordText;
 
@@ -21,10 +21,16 @@ namespace SnakeTest
         {
             gameManager = GameManager.Instance;
 
-            GameOverPanel.gameObject.SetActive(false);
-            HelpPanel.gameObject.SetActive(false);
+            GameOverPanel.Hide();
+            HelpPanel.Hide();
+            NewRecordText.Hide();
 
-            NewRecordText.gameObject.SetActive(false);
+            // 监听分数变化
+            gameManager.Score.RegisterWithInitValue(score =>
+            {
+                ScoreText.text = score.ToString();
+
+            }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
 
         private void Update()
@@ -39,22 +45,16 @@ namespace SnakeTest
                 }
             }
 
-            if (gameManager.Score != tempScore)
-            {
-                ScoreText.text = gameManager.Score.ToString();
-                tempScore = gameManager.Score;
-            }
-
             // 查看帮助
             if (Input.GetKeyDown(KeyCode.H))
             {
-                HelpPanel.gameObject.SetActive(true);
+                HelpPanel.Show();
                 Time.timeScale = 0f;
             }
 
             if (Input.GetKeyUp(KeyCode.H))
             {
-                HelpPanel.gameObject.SetActive(false);
+                HelpPanel.Show();
                 Time.timeScale = 1f;
             }
         }
