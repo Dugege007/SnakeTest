@@ -63,11 +63,11 @@ namespace SnakeTest
         {
             isGameOver = true;
 
-            GameOverPanel.gameObject.SetActive(true);
+            GameOverPanel.Show();
             TopScoreText.text = gameManager.TopScore.ToString();
 
             if (gameManager.IsNewRecord)
-                NewRecordText.gameObject.SetActive(true);
+                NewRecordText.Show();
         }
     }
 }

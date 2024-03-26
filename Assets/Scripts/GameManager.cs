@@ -78,7 +78,10 @@ namespace SnakeTest
         public void GameOver()
         {
             IsGaming = false;
-            Save();
+
+            if (Score.Value > TopScore)
+                Save();
+
             GameUI.Instance.GameOver();
         }
 
