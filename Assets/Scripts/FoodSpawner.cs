@@ -34,12 +34,12 @@ namespace SnakeTest
 
         public void SpawnFood()
         {
-            int randomX = Random.Range(-20, 21);
-            int randomY = Random.Range(-11, 12);
-            Vector3 randomPos = new Vector3(randomX, randomY, 0);
-
             while (true)
             {
+                int randomX = Random.Range(-20, 21);
+                int randomY = Random.Range(-11, 12);
+                Vector3 randomPos = new Vector3(randomX, randomY, 0);
+
                 if (GameManager.Instance.CheckOnSnakeBody(randomPos))
                 {
                     // ·ÖÅä
